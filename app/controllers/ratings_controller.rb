@@ -17,9 +17,9 @@ class RatingsController < ApplicationController
   def create
     #nested resource
     @rating = Rating.new(rating_params)
-    binding.pry
+    @rating.doctor_id = @doctor.id
     if @rating.save
-      render json: @rating, status: :created, location: @rating
+      render json: @rating, status: :created
     else
       render json: @rating.errors, status: :unprocessable_entity
     end
@@ -46,7 +46,7 @@ class RatingsController < ApplicationController
     end
 
     def set_doctor
-      @doctor = Doctor.find(params[:id])
+      @doctor = Doctor.find(params[:doctor_id])
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -2,6 +2,11 @@ class Doctor < ApplicationRecord
 
   has_many :ratings
   has_many :specialties
+  before_save :calculate_rating
+
+  def as_json(options={})
+    super(include:  { specialties: {only: :name}})
+  end
 
   def calculate_rating
     # handles calculating average rating
@@ -10,8 +15,13 @@ class Doctor < ApplicationRecord
       total += rating.score
     end
     total = total.to_f / (self.ratings.size).to_f
-    average_rating = total
+    self.average_score = total
     total
+  end
+
+  def self.find_related(doctor)
+    # finds doctors similiar to doctor
+    # similarity is based on primary(first) specialty, ordered by rating
   end
 
 end

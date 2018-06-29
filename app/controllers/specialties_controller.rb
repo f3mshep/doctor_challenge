@@ -16,7 +16,7 @@ class SpecialtiesController < ApplicationController
   # POST /doctors/1/specialties
   def create
     @specialty = Specialty.new(specialty_params)
-
+    @specialty.doctor_id = @doctor.id
     if @specialty.save
       render json: @specialty, status: :created, location: @specialty
     else
@@ -42,6 +42,10 @@ class SpecialtiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_specialty
       @specialty = Specialty.find(params[:id])
+    end
+
+    def set_doctor
+      @doctor = Doctor.find(params[:doctor_id])
     end
 
     # Only allow a trusted parameter "white list" through.
