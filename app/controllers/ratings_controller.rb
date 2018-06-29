@@ -1,6 +1,6 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :update, :destroy]
-
+  before_action :set_doctor
   # GET doctors/1/ratings
   def index
     @ratings = Rating.all
@@ -17,7 +17,7 @@ class RatingsController < ApplicationController
   def create
     #nested resource
     @rating = Rating.new(rating_params)
-    @doctor =
+    binding.pry
     if @rating.save
       render json: @rating, status: :created, location: @rating
     else

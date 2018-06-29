@@ -1,3 +1,3 @@
 class Rating < ApplicationRecord
-  belongs_to :Doctor
+  belongs_to :doctor
 end

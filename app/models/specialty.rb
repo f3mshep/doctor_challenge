@@ -1,3 +1,3 @@
 class Specialty < ApplicationRecord
-  belongs_to :Doctor
+  belongs_to :doctor
 end
