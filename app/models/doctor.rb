@@ -1,7 +1,8 @@
 class Doctor < ApplicationRecord
 
   has_many :ratings
-  has_many :specialties
+  has_many :doctor_specialties
+  has_many :specialties, through: :doctor_specialties
   before_save :calculate_rating
 
   def as_json(options={})

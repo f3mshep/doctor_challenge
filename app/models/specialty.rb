@@ -1,3 +1,4 @@
 class Specialty < ApplicationRecord
-  belongs_to :doctor
+  has_many :doctor_specialties
+  has_many :doctors, through: :doctor_specialties
 end

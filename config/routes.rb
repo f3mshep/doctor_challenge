@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :doctor_specialties
   resources :doctors
   #specialties and ratings are nested within doctors
   resources :doctors do
