@@ -1,19 +1,19 @@
 class SpecialtiesController < ApplicationController
   before_action :set_specialty, only: [:show, :update, :destroy]
 
-  # GET /specialties
+  # GET /doctors/1/specialties
   def index
     @specialties = Specialty.all
 
     render json: @specialties
   end
 
-  # GET /specialties/1
+  # GET /doctors/1/specialties/1
   def show
     render json: @specialty
   end
 
-  # POST /specialties
+  # POST /doctors/1/specialties
   def create
     @specialty = Specialty.new(specialty_params)
 
@@ -24,7 +24,7 @@ class SpecialtiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /specialties/1
+  # PATCH/PUT /doctors/1/specialties/1
   def update
     if @specialty.update(specialty_params)
       render json: @specialty
@@ -33,7 +33,7 @@ class SpecialtiesController < ApplicationController
     end
   end
 
-  # DELETE /specialties/1
+  # DELETE /doctors/1/specialties/1
   def destroy
     @specialty.destroy
   end
@@ -46,6 +46,6 @@ class SpecialtiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def specialty_params
-      params.require(:specialty).permit(:name, :Doctor_id)
+      params.require(:specialty).permit(:name, :doctor_id)
     end
 end
