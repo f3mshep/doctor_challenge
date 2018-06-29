@@ -10,7 +10,9 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/1
   def show
-    render json: @doctor
+    doctor_hash = @doctor.as_json
+    doctor_hash[:related_doctors] = Doctor.find_related(@doctor)
+    render json: doctor_hash
   end
 
   # POST /doctors

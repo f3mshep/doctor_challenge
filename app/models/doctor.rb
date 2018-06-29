@@ -1,5 +1,5 @@
 class Doctor < ApplicationRecord
-
+  # eventually can add validation such as uniqueness
   has_many :ratings
   has_many :doctor_specialties
   has_many :specialties, through: :doctor_specialties
@@ -23,6 +23,13 @@ class Doctor < ApplicationRecord
   def self.find_related(doctor)
     # finds doctors similiar to doctor
     # similarity is based on primary(first) specialty, ordered by rating
+    # go go gadget active record query!!!!
+    similiar_docs = Doctor.joins(:specialties)
+      .where.not(id: doctor.id)
+      .where(:specialties => {name: doctor.specialties.first.name})
+      .order('average_score DESC')
+    similiar_docs
+
   end
 
 end

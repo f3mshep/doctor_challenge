@@ -3,7 +3,7 @@ class Rating < ApplicationRecord
   after_save :calculate_rating
 
   def calculate_rating
-    # calculates the doctor's rating after this rating is saved
+    # triggers doctor updating average_rating by saving doctor
     self.doctor.save
   end
 
