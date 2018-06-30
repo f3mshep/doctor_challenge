@@ -1,4 +1,5 @@
 import React from 'react';
+import DoctorThumbnail from '../components/doctor_thumbnail.js'
 
 class ListView extends React.Component{
   constructor(props){
@@ -16,6 +17,12 @@ class ListView extends React.Component{
     .then(doctors => this.setState({doctors}))
   }
 
+  getDoctorThumbnails(){
+    return this.state.doctors.map((doctor, index) =>
+      <DoctorThumbnail doctor={doctor} key={index} />
+    )
+  }
+
   componentWillMount(){
     fetchDoctors()
   }
@@ -24,6 +31,7 @@ class ListView extends React.Component{
     return(
       <div>
         <ul>
+          {this.getDoctorThumbnails()}
         </ul>
       </div>
     )
