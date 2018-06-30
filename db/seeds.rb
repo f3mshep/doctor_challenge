@@ -26,3 +26,22 @@ abraham.specialties << gp
 abraham_ratings = Rating.create([{score: 3},{score: 3},{score: 3},{score: 4}])
 abraham.ratings = abraham_ratings
 abraham.save
+
+
+metzker = Doctor.create({first_name: "Lindsey", last_name: "Metzker", bio: "Very smart, very humble", location: "Concord, CA"})
+psych = Specialty.new({name: "Psychiatrist"})
+love_doctor = Specialty.new({name: "Love Doctor"})
+metzker_ratings = Rating.create([{score: 3},{score: 3},{score: 3},{score: 4}])
+metzker.ratings = metzker_ratings
+metzker.specialties << psych
+metzker.save
+
+madden = Doctor.create({first_name: "Bill", last_name:"Madden", location: "San Francisco, CA"})
+madden.ratings = Rating.create([{score: 5},{score: 3},{score: 3},{score: 4}])
+madden.specialties << psych
+madden.save
+
+svennson = Doctor.create({first_name: "Emily", last_name: "Svennson", location:"San Rafael, CA"})
+svennson.ratings = Rating.create([{score: 5},{score: 5},{score: 5},{score: 5}])
+svennson.specialties << love_doctor
+svennson.save
