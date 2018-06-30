@@ -1,6 +1,16 @@
 # Practice Fusion Challenge
 This is a simple API that fufills the requirements of the Practice Fusion code challenge. Doctors are listed, and viewing an individual doctor resource will show related doctors, chosen by speciality, and ordered by user rating. The application comes with pre-seeded data. 
 
+## Local Installation
+
+Please note this application requires postgres db to be installed and configured to run.
+
+Clone the repo. `cd` into the root directory, and run `bundle install` to install all dependencies. 
+
+Run `rake db:create` to create the database, followed by `rake db:migrate` to run all migrations. Finally, seed the database with `rake db:seed`
+
+To run the API, run `rails s`.
+
 ## API Endpoints
 
 ```http
